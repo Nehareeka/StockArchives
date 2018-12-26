@@ -1,0 +1,56 @@
+﻿<div class='panel panel-primary'>
+    <div class='panel-heading'>
+
+    </div>
+    <div class='panel-body'>
+
+
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                <tr>
+                    <th *ngFor="let column of columns" [appSort]="config" [column]="column" (sortChanged)="onChangeTable($event)">
+                        {{column.title | titlecase}}
+                        <i class="fa" [ngClass]="{'fa-angle-down': column.sort === 'desc', 'fa-angle-up': column.sort === 'asc'}"></i>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let stock of pagedItems'>
+                    <td>
+                        <a [routerLink]="['/detail',stock.symbol]">{{ stock?.symbol }}</a>
+                    </td>
+                    <td>{{ stock?.date | date:'mediumDate'}}</td>
+                    <td>{{ stock?.open }}</td>
+                    <td>{{ stock?.close }}</td>
+                    <td>{{ stock?.low }}</td>
+                    <td>{{ stock?.high }}</td>
+                    <td>{{ stock?.volume | number:'7.0-0'}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="text-center">
+
+    <!-- pager -->
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(1)">First</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+        </li>
+        <li *ngFor="let page of pager.pages" class="page-item" [ngClass]="{active:pager.currentPage === page}">
+            <a class="page-link" (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+        </li>
+    </ul>
+</div>

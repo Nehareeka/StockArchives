@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="~/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+<header class="container">
+
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+        <h1 class="navbar-brand">
+            Welcome to Stock Archive!
+        </h1>
+    </nav>
+</header>
+<section class="container">
+    @RenderBody()
+</section>
+<footer class="container">
+    Copyright 2018 StockArchives LLC
+</footer>
+<script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+@RenderSection("scripts", false)
+</body>
+</html>
